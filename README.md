@@ -18,7 +18,7 @@ Kishore’s Cricket Academy is a React-based web application where **all content
 
 ---
 
-## ✨ Key Features
+##  Key Features
 - **High-quality images** served from **Storyblok Assets**
 -  **Store** page with cricket products
 - Ability to **add products to a wishlist**
