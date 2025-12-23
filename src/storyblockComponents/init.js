@@ -11,7 +11,7 @@ import { FAQItem } from "./HelpPageComponents/FAQItem";
 
 
 storyblokInit({
-  accessToken: "EvBZM2UrkjPGBbmmGsxGVQtt",
+  accessToken: import.meta.env.VITE_CDN_ACCESS_TOKEN,
   use: [apiPlugin],
   apiOptions: {
     region: "eu",
