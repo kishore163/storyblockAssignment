@@ -1,0 +1,163 @@
+/* =========================================================
+   HEADER
+========================================================= */
+
+.outer_header_container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 16px 48px;
+  background-color: #ffffff;
+  border-bottom: 1px solid #eaeaea;
+
+  position: relative;
+}
+
+/* =========================================================
+   LOGO
+========================================================= */
+
+.header_brand img {
+  height: 90px;
+  width: auto;
+}
+
+/* =========================================================
+   NAV BAR
+========================================================= */
+
+.nav_bar {
+  display: flex;
+  gap: 32px;
+
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* =========================================================
+   NAV ITEM WRAPPER
+========================================================= */
+
+.nav_items {
+  border-radius: 10px;
+  transition: transform 0.15s ease;
+}
+
+.nav_items:active {
+  transform: scale(0.97);
+}
+
+/* =========================================================
+   NAV LINK (DEFAULT)
+========================================================= */
+
+.nav_link {
+  display: block;
+  padding: 10px 18px;
+
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 500;
+
+  color: #0f172a;
+  border-radius: 10px;
+
+  background-color: transparent;
+
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease;
+}
+
+/* =========================================================
+   HOVER STATE
+========================================================= */
+
+.nav_items:hover .nav_link {
+  background-color: #f1f5f9;
+  color: #0f172a;
+}
+
+/* =========================================================
+   ACTIVE STATE (CURRENT PAGE)
+========================================================= */
+
+.nav_link.active {
+  background-color: #0f172a;   /* dark active tab */
+  color: #e5e7eb;              /* light text */
+}
+
+/* Keep active state even on hover */
+.nav_items:hover .nav_link.active {
+  background-color: #0f172a;
+  color: #e5e7eb;
+}
+
+/* =========================================================
+   WISHLIST / STORE ICON
+========================================================= */
+
+.header_storeImg img {
+  height: 80px;
+  width: auto;
+  cursor: pointer;
+}
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.footer_container {
+  background-color: #0f172a;
+  color: #ffffff;
+  padding: 64px 48px 32px;
+}
+
+.footer_heading {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.footer_subheading {
+  font-size: 16px;
+  color: #cbd5e1;
+  max-width: 600px;
+  margin-bottom: 40px;
+}
+
+.footer_nav_container {
+  display: flex;
+  gap: 80px;
+  margin-bottom: 40px;
+}
+
+.footer_nav1,
+.footer_nav2 {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.footer_nav1 a,
+.footer_nav2 a {
+  text-decoration: none;
+  color: #e2e8f0;
+  font-size: 15px;
+  transition: color 0.2s ease;
+}
+
+.footer_nav1 a:hover,
+.footer_nav2 a:hover {
+  color: #38bdf8;
+}
+
+.footer_copyright {
+  border-top: 1px solid #1e293b;
+  padding-top: 16px;
+
+  font-size: 14px;
+  color: #94a3b8;
+}

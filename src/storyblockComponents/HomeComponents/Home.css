@@ -1,0 +1,58 @@
+/* ===== HOME TAB SECTION ===== */
+.home_tab_section {
+  padding: 80px 48px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Section heading */
+.home_tab_section_heading {
+  font-size: 36px;
+  font-weight: 800;
+  text-align: center;
+  color: #0f172a;
+  margin-bottom: 64px;
+}
+
+/* Entries grid */
+.home_tab_entry {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 48px;
+}
+
+
+/* ===== HOME TAB ENTRY ITEM ===== */
+.home_tab_entry_item {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Entry image */
+.home_tab_entry_item img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+/* Entry headline */
+.entry_headline {
+  font-size: 22px;
+  font-weight: 700;
+  color: #0f172a;
+
+  transition: color 0.25s ease;
+  cursor: pointer;
+}
+
+
+.home_tab_entry_item:hover .entry_headline {
+  color: #2563eb;
+}
+
+
+.home_tab_entry_item .rich_text {
+  margin-top: 4px;
+}
