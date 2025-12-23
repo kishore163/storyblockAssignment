@@ -1,29 +1,32 @@
-// useStory.js
 import { useEffect, useState } from "react";
 import { useStoryblokApi } from "@storyblok/react";
 
-export function useStory(slug, params = {}) {
+export const useStory = (slug) => {
   const storyblokApi = useStoryblokApi();
   const [data, setData] = useState(null);
 
+  const version = import.meta.env.VITE_STORYBLOK_VERSION;
+
   useEffect(() => {
-    let cancelled = false;
+    if (!slug) return;
 
-    async function load() {
-      const res = await storyblokApi.get(`cdn/stories/${slug}`, {
-        version: "draft",
-        ...params,
-      });
-
-      if (!cancelled) setData(res?.data);
-    }
-
-    load();
-
-    return () => {
-      cancelled = true;
+    const fetchStory = async () => {
+      const res = await storyblokApi.get(
+        `cdn/stories/${slug.replace(/^\/+/, "")}`,
+        {
+          version,
+        }
+      );
+      setData(res.data);
     };
-  }, [slug]);
+
+    fetchStory();
+
+   
+    if (version === "draft" && window.storyblok) {
+      window.storyblok.on(["change", "published"], fetchStory);
+    }
+  }, [slug, storyblokApi, version]);
 
   return data;
-}
+};

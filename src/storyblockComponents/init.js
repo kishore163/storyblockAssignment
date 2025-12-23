@@ -11,11 +11,12 @@ import { FAQItem } from "./HelpPageComponents/FAQItem";
 
 
 storyblokInit({
-  accessToken: import.meta.env.VITE_CDN_ACCESS_TOKEN,
+  accessToken: import.meta.env.VITE_STORYBLOK_TOKEN,
   use: [apiPlugin],
   apiOptions: {
     region: "eu",
   },
+  bridge: import.meta.env.VITE_STORYBLOK_VERSION === "draft",
   components: {
     "Image_Text_comp": ImageTextComp,
     "success_card": SuccessCard,
