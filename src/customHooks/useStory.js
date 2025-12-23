@@ -5,7 +5,10 @@ export const useStory = (slug) => {
   const storyblokApi = useStoryblokApi();
   const [data, setData] = useState(null);
 
-  const version = import.meta.env.VITE_STORYBLOK_VERSION;
+  const isPreview =
+    import.meta.env.VITE_STORYBLOK_ENV === "preview";
+
+  const version = isPreview ? "draft" : "published";
 
   useEffect(() => {
     if (!slug) return;
@@ -13,20 +16,33 @@ export const useStory = (slug) => {
     const fetchStory = async () => {
       const res = await storyblokApi.get(
         `cdn/stories/${slug.replace(/^\/+/, "")}`,
-        {
-          version,
-        }
+        { version }
       );
       setData(res.data);
     };
 
     fetchStory();
 
-   
-    if (version === "draft" && window.storyblok) {
-      window.storyblok.on(["change", "published"], fetchStory);
+    if (!isPreview) return;
+
+    const onStoryblokEvent = () => fetchStory();
+
+    if (window.storyblok) {
+      window.storyblok.on(
+        ["input", "change", "published"],
+        onStoryblokEvent
+      );
     }
-  }, [slug, storyblokApi, version]);
+
+    return () => {
+      if (window.storyblok) {
+        window.storyblok.off(
+          ["input", "change", "published"],
+          onStoryblokEvent
+        );
+      }
+    };
+  }, [slug, storyblokApi, isPreview, version]);
 
   return data;
 };
